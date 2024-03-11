@@ -1,0 +1,97 @@
+@use "sass:math"
+@import "npm:@fontsource-variable/inter/index.css"
+
+// Scales sizes based on the Figma base dimensions of 249x268
+@function scaledMd($size)
+  @return calc($size * 50vh / 268)
+
+@mixin scaledProp($property, $value)
+  #{$property}: scaledMd($value)
+
+  @media (max-width: 400px)
+    #{$property}: $value
+
+
+html, body
+  margin: 0
+  padding: 0
+  width: 100vw
+  height: 100vh
+
+body
+  background: linear-gradient(180deg, #FF69B4 0%, #FF3B9D 100%)
+  overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+
+main
+  border: 1px solid rgba(255, 255, 255, 0.15)
+  background: rgba(228, 228, 228, 0.15)
+  backdrop-filter: blur(2px)
+
+  @media (orientation: portrait)
+    width: 70vmin
+    min-height: 85vmin
+
+  @media (orientation: landscape)
+    max-width: 55vmin
+    height: 70vmin
+
+  color: #FFF
+  text-align: center
+  font-family: "Inter Variable", sans-serif
+  @include scaledProp(font-size, 16)
+  font-style: normal
+  font-weight: 400
+  line-height: normal
+
+  h1
+    @include scaledProp(margin-top, 15)
+    @include scaledProp(font-size, 16)
+    font-weight: 400
+
+  img
+    @include scaledProp(margin-top, 9)
+    @include scaledProp(margin-bottom, 28)
+
+    @include scaledProp(width, 55)
+    @include scaledProp(height, 55)
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVR4nAE0AMv/APGIurdAcXhLX+ji2wD/arH/sfOIJkZtN08A4leb/7Hx/3alKAAMAJQuYf9ypf98qUsFKeYmGqBVP5wCAAAAAElFTkSuQmCC')
+    background-size: cover
+    border-radius: 100%
+
+  .bio
+    @include scaledProp(margin-left, 24)
+    @include scaledProp(margin-right, 24)
+
+  .buttonRow
+    @include scaledProp(margin-top, 22)
+
+    display: flex
+    flex: 0
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    @include scaledProp(gap, 20)
+    @include scaledProp(margin-bottom, 68)
+
+    #instagram > svg, #behance > svg
+      @include scaledProp(width, 28)
+      @include scaledProp(height, 28)
+
+    #photography > svg
+      @include scaledProp(width, 31)
+      @include scaledProp(height, 28)
+
+#bg
+  position: absolute
+  top: 0
+  left: 0
+  width: 20vw
+  height: 20vh
+  z-index: -1
+  transform: scale(5)
+  transform-origin: 0 0
+  will-change: transform
+  filter: blur(9px)

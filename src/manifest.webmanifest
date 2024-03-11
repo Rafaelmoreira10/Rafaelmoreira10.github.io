@@ -1,0 +1,9 @@
+{
+  "icons": [
+    { "src": "photo.jpg?width=192", "type": "image/jpeg", "sizes": "192x192" },
+    { "src": "photo.jpg?width=512", "type": "image/jpg", "sizes": "512x512" }
+  ],
+  "screenshots": [
+    { "src": "opengraph.png", "type": "image/png", "sizes": "1200x630" }
+  ]
+}
