@@ -30,6 +30,8 @@ jobs:
           node-version: "20"
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+      - name: Build
+        run: yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
